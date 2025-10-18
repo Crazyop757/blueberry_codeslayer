@@ -172,7 +172,54 @@ Once deployed, visit:
 - API Docs: `https://your-api-url.onrender.com/docs`
 - ReDoc: `https://your-api-url.onrender.com/redoc`
 
-## 🤝 Contributing
+## � Local Testing (new)
+
+You can run and test the API locally without deploying to Render. The backend now supports:
+
+- POST /analyze - accepts JSON payload { "image_url": "<http|https|data:...|local_path>" }
+- POST /analyze/upload - accepts multipart file upload (form field name: file)
+
+Start the backend locally:
+
+```powershell
+# create and activate venv (Windows PowerShell)
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+
+# install dependencies
+pip install -r requirements.txt
+
+# run server
+uvicorn civicfix_api:app --reload --port 8000
+```
+
+Test the root endpoint:
+
+```powershell
+curl http://localhost:8000/
+```
+
+Test by sending a public image URL:
+
+```powershell
+curl -X POST http://localhost:8000/analyze -H "Content-Type: application/json" -d '{"image_url":"https://images.unsplash.com/photo-1530587191325-3db32d826c18?w=800"}'
+```
+
+Test by sending a data URL (from the frontend's FileReader result):
+
+```powershell
+curl -X POST http://localhost:8000/analyze -H "Content-Type: application/json" -d '{"image_url":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."}'
+```
+
+Test file upload:
+
+```powershell
+curl -X POST http://localhost:8000/analyze/upload -F "file=@C:\path\to\image.jpg"
+```
+
+If you run the React frontend locally, it will use `http://localhost:8000` by default (see `civicfix-frontend/.env.development`).
+
+## �🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 

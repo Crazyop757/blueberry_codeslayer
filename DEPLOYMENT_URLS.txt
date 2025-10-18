@@ -1,0 +1,15 @@
+# Save Your Deployment URLs Here
+
+## Backend API URL:
+https://_____________________________________.onrender.com
+
+## Frontend URL:
+https://_____________________________________.onrender.com
+
+## Deployment Date:
+October 18, 2025
+
+## Notes:
+- Backend takes 5-10 min for first deploy
+- Frontend takes 3-5 min
+- Free tier sleeps after 15 min inactivity
