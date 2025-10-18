@@ -3,5 +3,6 @@ torch
 Pillow
 requests
 fastapi
-uvicorn
+uvicorn[standard]
 pydantic
+python-multipart
